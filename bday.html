@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Beautiful! 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 100%);
+        }
+
+        /* Floating decorations */
+        .floating-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+                opacity: 1;
+            }
+        }
+
+        /* Section styling */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Welcome Section */
+        #welcome {
+            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 100%);
+        }
+
+        .welcome-content {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #8b4513;
+            margin-bottom: 30px;
+            font-style: italic;
+            animation: titleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .heart-row {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            animation: heartPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .heart {
+            font-size: 2.5rem;
+            animation: heartBeat 1s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.3);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #ff7b7b 0%, #ff9999 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 123, 123, 0.4);
+            animation: btnGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes btnGlow {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(255, 123, 123, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 50px rgba(255, 123, 123, 0.8);
+            }
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 123, 123, 0.6);
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 100%);
+        }
+
+        .gallery-title {
+            font-size: 3rem;
+            color: #8b4513;
+            margin-bottom: 50px;
+            font-style: italic;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            animation: fadeInScale 0.8s ease-out backwards;
+            background: white;
+        }
+
+        .photo-card:nth-child(1) { animation-delay: 0.1s; }
+        .photo-card:nth-child(2) { animation-delay: 0.2s; }
+        .photo-card:nth-child(3) { animation-delay: 0.3s; }
+        .photo-card:nth-child(4) { animation-delay: 0.4s; }
+        .photo-card:nth-child(5) { animation-delay: 0.5s; }
+        .photo-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(139, 69, 19, 0.9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-style: italic;
+        }
+
+        .photo-card:hover .photo-caption {
+            transform: translateY(0);
+        }
+
+        /* Message Section */
+        #message {
+            background: linear-gradient(135deg, #9370db 0%, #b19cd9 100%);
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .message-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .message-text {
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .message-signature {
+            color: #ffe4b5;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .message-hearts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            font-size: 2rem;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff7b7b;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .message-card {
+                padding: 30px;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorations -->
+    <div id="decorations"></div>
+
+    <!-- Welcome Section -->
+    <section id="welcome">
+        <div class="welcome-content">
+            <h1>Happy Birthday, Akshuuuu! 💕</h1>
+            <p class="subtitle">Today is all about celebrating you and the joy you bring to my life</p>
+            
+            <div class="heart-row">
+                <span class="heart">❤️</span>
+                <span class="heart">💕</span>
+                <span class="heart">💖</span>
+                <span class="heart">💗</span>
+                <span class="heart">❤️</span>
+            </div>
+            
+            <button class="start-btn" onclick="scrollToGallery()">Start the Celebration 🎉</button>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="gallery-title">Our Beautiful Memories 🦋</h2>
+        <div class="photo-grid">
+            <div class="photo-card">
+                <div class="photo-container">
+                    <img src="C:\Users\Asus\OneDrive\Desktop\shuuuuu\images\WhatsApp Image 2026-02-07 at 1.42.17 PM.jpeg" alt="Memory 1">
+                </div>
+                <div class="photo-caption">Our first adventure 🌸</div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-container">
+                    <img src="C:\Users\Asus\OneDrive\Desktop\shuuuuu\images\WhatsApp Image 2026-02-07 at 1.05.09 PM (2).jpeg" alt="Memory 2">
+                </div>
+                <div class="photo-caption">Perfect moment together 💫</div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-container">
+                    <img src="C:\Users\Asus\OneDrive\Desktop\shuuuuu\images\WhatsApp Image 2026-02-07 at 1.05.09 PM (3).jpeg" alt="Memory 3">
+                </div>
+                <div class="photo-caption">Adventures together 🌟</div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-container">
+                    <img src="C:\Users\Asus\OneDrive\Desktop\shuuuuu\images\WhatsApp Image 2026-02-07 at 1.05.08 PM (1).jpeg" alt="Memory 4">
+                </div>
+                <div class="photo-caption">Sweet memories 💕</div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-container">
+                    <img src="C:\Users\Asus\OneDrive\Desktop\shuuuuu\images\WhatsApp Image 2026-02-07 at 1.05.09 PM (1).jpeg" alt="Memory 5">
+                </div>
+                <div class="photo-caption">Love and laughter 🎀</div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-container">
+                    <img src="C:\Users\Asus\OneDrive\Desktop\shuuuuu\images\WhatsApp Image 2026-02-07 at 1.39.15 PM.jpeg" alt="Memory 6">
+                </div>
+                <div class="photo-caption">Forever moments ✨</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section id="message">
+        <div class="message-card">
+            <h2 class="message-title">A Special Message for You 💝</h2>
+            <p class="message-text">
+                On this special day, I want you to know how grateful I am to have you in my life. 
+                Your laughter fills my days, you give me strength, and your presence makes everything better.
+             You are not just my best friend,you are my heart, eyes, lungs, blood and bones. You are my everything❤️
+            </p>
+            <p class="message-text">
+                Today, let's celebrate you – your kindness, your beauty, your amazing spirit, and all 
+                the wonderful things that make you uniquely you. I hope this new year of your life 
+                brings you endless happiness may all your dreams come true. Else we together make them come true
+            </p>
+            <p class="message-signature">
+                Happy Birthday, love! Here's to many more years of laughter and beautiful memories together. 💕
+            </p>
+            <div class="message-hearts">
+                <span class="heart">💖</span>
+                <span class="heart">❤️</span>
+                <span class="heart">💕</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Create floating decorations
+        function createDecorations() {
+            const decorations = document.getElementById('decorations');
+            const emojis = ['🌸', '🦋', '💖', '✨', '🌟', '💫', '🌺', '🌹'];
+            
+            for (let i = 0; i < 20; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'floating-decoration';
+                decoration.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                decoration.style.left = Math.random() * 100 + '%';
+                decoration.style.top = Math.random() * 100 + '%';
+                decoration.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                decoration.style.animationDelay = Math.random() * 5 + 's';
+                decoration.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                decorations.appendChild(decoration);
+            }
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#ff7b7b', '#ffb6c1', '#ffc0cb', '#ff69b4', '#ff1493', '#ffd700'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // Scroll to gallery
+        function scrollToGallery() {
+            createConfetti();
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize
+        createDecorations();
+        
+        // Periodic confetti
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createConfetti();
+            }
+        }, 5000);
+
+        // Smooth scroll for all sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.photo-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
